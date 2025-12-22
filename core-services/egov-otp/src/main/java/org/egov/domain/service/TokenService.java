@@ -12,9 +12,8 @@ import org.egov.domain.model.Tokens;
 import org.egov.domain.model.ValidateRequest;
 import org.egov.persistence.repository.TokenRepository;
 import org.egov.tracer.model.CustomException;
-import org.egov.web.util.*;
+import org.egov.web.util.OtpConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.*;
 import org.springframework.security.crypto.password.*;
 import org.springframework.stereotype.Service;
 
@@ -114,7 +113,7 @@ public class TokenService {
         for (Token t: tokens.getTokens()) {
 
             if (!otpConfiguration.isEncryptOTP() && validateRequest.getOtp().equalsIgnoreCase(t.getNumber())
-             || (otpConfiguration.isEncryptOTP()  && passwordEncoder.matches(validateRequest.getOtp(), t.getNumber()))) {
+             || otpConfiguration.isEncryptOTP()  && passwordEncoder.matches(validateRequest.getOtp(), t.getNumber())) {
                 tokenRepository.markAsValidated(t);
                 return t;
             }
