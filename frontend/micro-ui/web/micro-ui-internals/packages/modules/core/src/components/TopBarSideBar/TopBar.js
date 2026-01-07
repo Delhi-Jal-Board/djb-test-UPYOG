@@ -275,7 +275,7 @@ const TopBar = ({
                 </div>
               </div>
             )}
-            <img className="state" src="https://mcd-asset.s3.ap-south-1.amazonaws.com/SBM_IMG.jpeg" />
+            <img className="state" src="https://abdeas-dev-asset.s3.ap-south-1.amazonaws.com/SBM_IMG.png" />
           </div>
         )}
       </span>
